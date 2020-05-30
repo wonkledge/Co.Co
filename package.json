@@ -1,12 +1,13 @@
 {
   "name": "@wonkledge/co.co",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node JS API Framework",
   "main": "index.js",
   "scripts": {
     "start": "babel-node src/index.js",
     "dev": "nodemon --exec 'babel-node src/index.js'",
-    "test": "jest src/"
+    "test": "jest src/",
+    "prepublishOnly": "babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/wonkledge/Co.Co#readme",
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.1",
     "@babel/node": "^7.10.1",
     "@babel/preset-env": "^7.10.1",
