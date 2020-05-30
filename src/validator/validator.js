@@ -1,4 +1,5 @@
 import {promiseWrapper, rejected, resolved} from "../promise/promise";
+import {HTTP_CODE_400, httpResponseWrapper} from "../httpCode/httpCode";
 
 export const checkParameters = validators => req => {
     let errors = [];
@@ -6,13 +7,13 @@ export const checkParameters = validators => req => {
     errors = checkRequiredParameters(req, validators);
 
     if (errors.length > 0) {
-        return promiseWrapper(rejected(errors));
+        return promiseWrapper(rejected(httpResponseWrapper(HTTP_CODE_400, errors)));
     }
 
     errors = checkOptionalParameters(req, validators);
 
     if (errors.length > 0) {
-        return promiseWrapper(rejected(errors));
+        return promiseWrapper(rejected(httpResponseWrapper(HTTP_CODE_400, errors)));
     }
 
     return promiseWrapper(resolved(req));
