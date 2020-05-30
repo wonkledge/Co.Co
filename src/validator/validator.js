@@ -1,6 +1,6 @@
 import {promiseWrapper, rejected, resolved} from "../promise/promise";
 
-export const checkParameters = (validators, req) => {
+export const checkParameters = validators => req => {
     let errors = [];
     req = discardUnusedParameters(req, validators);
     errors = checkRequiredParameters(req, validators);

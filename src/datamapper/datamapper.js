@@ -18,11 +18,7 @@ import {promiseWrapper, resolved} from "../promise/promise";
  */
 const empty = (arr) => arr.length === 0;
 
-/**
- *
- * @param mapping
- * @returns {function(*): array}
- */
+
 export const mapFields = mapping => data => {
 
     const dataMapped = data.map( entry => {
