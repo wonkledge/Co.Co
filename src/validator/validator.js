@@ -1,3 +1,4 @@
+import {promiseWrapper, rejected, resolved} from "../promise/promise";
 
 export const checkParameters = (validators, req) => {
     let errors = [];
@@ -5,16 +6,16 @@ export const checkParameters = (validators, req) => {
     errors = checkRequiredParameters(req, validators);
 
     if (errors.length > 0) {
-        return errors;
+        return promiseWrapper(rejected(errors));
     }
 
     errors = checkOptionalParameters(req, validators);
 
     if (errors.length > 0) {
-        return errors;
+        return promiseWrapper(rejected(errors));
     }
 
-    return req;
+    return promiseWrapper(resolved(req));
 };
 
 const discardUnusedParameters = (req, validators) => {

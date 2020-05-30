@@ -36,10 +36,7 @@ describe('promise wrapper function', () => {
 
         expect(promiseWrapper(promiseStatus)).resolves.toBe(data);
     });
-});
 
-
-describe('promise wrapper function', () => {
     it('Should reject when data has status resolved', () => {
         const data = 'payload';
         const promiseStatus = rejected(data);

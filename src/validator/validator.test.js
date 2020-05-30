@@ -24,7 +24,7 @@ describe('checkParameters Function', () => {
         ];
         const req = { id: 9, address: 'mapplestreet'}
 
-        expect(checkParameters(validators, req)).toStrictEqual({ id: 9, address: 'mapplestreet'});
+        expect(checkParameters(validators, req)).resolves.toStrictEqual({ id: 9, address: 'mapplestreet'});
     });
 
     it('Should failed when all required parameters are not provided', () => {
@@ -50,7 +50,7 @@ describe('checkParameters Function', () => {
         ];
         const req = { id: 9 }
 
-        expect(checkParameters(validators, req)).toStrictEqual(['Missing required parameters address']);
+        expect(checkParameters(validators, req)).rejects.toStrictEqual(['Missing required parameters address']);
     });
 
     it('Should succeed when all required parameters have valid values', () => {
@@ -71,7 +71,7 @@ describe('checkParameters Function', () => {
 
         const req = { id: 4, address: '23 rue des etoiles'}
 
-        expect(checkParameters(validators, req)).toStrictEqual({id: 4, address: '23 rue des etoiles'});
+        expect(checkParameters(validators, req)).resolves.toStrictEqual({id: 4, address: '23 rue des etoiles'});
     });
 
     it('Should failed when all required parameters have not valid values', () => {
@@ -92,7 +92,7 @@ describe('checkParameters Function', () => {
 
         const req = { id: 'john', address: '23 rue des etoiles'}
 
-        expect(checkParameters(validators, req)).toStrictEqual(['id must satisfy [0-9]+']);
+        expect(checkParameters(validators, req)).rejects.toStrictEqual(['id must satisfy [0-9]+']);
     });
 
     it('Should succeed when all optional parameters have valid values', () => {
@@ -113,7 +113,7 @@ describe('checkParameters Function', () => {
 
         const req = { id: 4 }
 
-        expect(checkParameters(validators, req)).toStrictEqual({ id: 4 });
+        expect(checkParameters(validators, req)).resolves.toStrictEqual({ id: 4 });
     });
 
     it('Should failed when all optional parameters have not valid values', () => {
@@ -134,7 +134,7 @@ describe('checkParameters Function', () => {
 
         const req = { id: 4, address: 3 }
 
-        expect(checkParameters(validators, req)).toStrictEqual(['address must satisfy [a-z]+']);
+        expect(checkParameters(validators, req)).rejects.toStrictEqual(['address must satisfy [a-z]+']);
     });
 
     it('Should discard all unwanted parameters', () => {
@@ -155,6 +155,6 @@ describe('checkParameters Function', () => {
 
         const req = { id: 4, address: 'mapplestreet', age: 33  }
 
-        expect(checkParameters(validators, req)).toStrictEqual({id: 4, address: 'mapplestreet'});
+        expect(checkParameters(validators, req)).resolves.toStrictEqual({id: 4, address: 'mapplestreet'});
     });
 });

@@ -9,6 +9,8 @@
  **/
 
 
+import {promiseWrapper, resolved} from "../promise/promise";
+
 /**
  *
  * @param arr
@@ -22,7 +24,8 @@ const empty = (arr) => arr.length === 0;
  * @returns {function(*): array}
  */
 export const mapFields = mapping => data => {
-    return data.map( entry => {
+
+    const dataMapped = data.map( entry => {
         let fields = Object.keys(entry);
 
         return fields.reduce( (entryMapped, field) => {
@@ -43,4 +46,6 @@ export const mapFields = mapping => data => {
             return entryMapped;
         }, {});
     })
+
+    return promiseWrapper(resolved(dataMapped));
 };

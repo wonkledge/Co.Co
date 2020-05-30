@@ -10,7 +10,7 @@ describe('mapFields Function', () => {
         ];
         const data = [{ id: 49 }];
 
-        expect(mapFields(mapping)(data)).toStrictEqual([{ id_user: 49}]);
+        expect(mapFields(mapping)(data)).resolves.toStrictEqual([{ id_user: 49}]);
     });
 
     it('Should transform fields', () => {
@@ -23,7 +23,7 @@ describe('mapFields Function', () => {
         ];
         const data = [{ id: 49 }];
 
-        expect(mapFields(mapping)(data)).toStrictEqual([{ id_user: 100}]);
+        expect(mapFields(mapping)(data)).resolves.toStrictEqual([{ id_user: 100}]);
     });
 
     it('Should transform fields by condition on context data', () => {
@@ -40,7 +40,7 @@ describe('mapFields Function', () => {
         ];
         const data = [{ id: 49, status: 'employee' }];
 
-        expect(mapFields(mapping)(data)).toStrictEqual([{ id_user: 49, status: 'god'}]);
+        expect(mapFields(mapping)(data)).resolves.toStrictEqual([{ id_user: 49, status: 'god'}]);
     });
 
     it('Should works when data does not contains mapping fields', () => {
@@ -56,6 +56,6 @@ describe('mapFields Function', () => {
         ];
         const data = [{ name: 'anais' }];
 
-        expect(mapFields(mapping)(data)).toStrictEqual([{ name: 'anais' }]);
+        expect(mapFields(mapping)(data)).resolves.toStrictEqual([{ name: 'anais' }]);
     });
 });
