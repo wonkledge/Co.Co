@@ -1,0 +1,32 @@
+{
+  "name": "co.co",
+  "version": "1.0.0",
+  "description": "Node JS API Framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "dev": "nodemon --exec 'babel-node src/index.js'",
+    "test": "jest src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonkledge/Co.Co.git"
+  },
+  "keywords": [
+    "Framework",
+    "API"
+  ],
+  "author": "wonkledge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wonkledge/Co.Co/issues"
+  },
+  "homepage": "https://github.com/wonkledge/Co.Co#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.1",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4"
+  }
+}
