@@ -7,16 +7,16 @@ export const checkParameters = validators => req => {
     errors = checkRequiredParameters(req, validators);
 
     if (errors.length > 0) {
-        return promiseWrapper(rejected(httpResponseWrapper(HTTP_CODE_400, errors)));
+        return rejected(httpResponseWrapper(HTTP_CODE_400, errors));
     }
 
     errors = checkOptionalParameters(req, validators);
 
     if (errors.length > 0) {
-        return promiseWrapper(rejected(httpResponseWrapper(HTTP_CODE_400, errors)));
+        return rejected(httpResponseWrapper(HTTP_CODE_400, errors));
     }
 
-    return promiseWrapper(resolved(req));
+    return resolved(req);
 };
 
 const discardUnusedParameters = (req, validators) => {

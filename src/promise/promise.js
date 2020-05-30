@@ -25,8 +25,8 @@ export const pipe = (...functions) => input => {
 
 export const either = (left, right) => ({left: left, right: right});
 
-export const resolved = (data) => ({ status: RESOLVED, payload: data });
-export const rejected = (data) => ({ status: REJECTED, payload: data });
+export const resolved = (data) => new Promise((resolve, rejected) => resolve(data));
+export const rejected = (data) => new Promise((resolve, rejected) => rejected(data));
 
 export const promiseWrapper = (data) => new Promise(
     (resolve, reject) => data.status === RESOLVED ? resolve(data.payload) : reject(data.payload)

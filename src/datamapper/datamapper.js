@@ -8,16 +8,7 @@
  *
  **/
 
-
-import {promiseWrapper, resolved} from "../promise/promise";
-
-/**
- *
- * @param arr
- * @returns {boolean}
- */
-const empty = (arr) => arr.length === 0;
-
+import {resolved} from "../promise/promise";
 
 export const mapFields = mapping => data => {
 
@@ -25,14 +16,12 @@ export const mapFields = mapping => data => {
         let fields = Object.keys(entry);
 
         return fields.reduce( (entryMapped, field) => {
-            let mapper = mapping.filter( mapper => mapper.source === field);
+            let [mapper] = mapping.filter( mapper => mapper.source === field);
 
-            if (empty(mapper)) {
+            if (mapper === undefined) {
                 entryMapped[field] = entry[field];
                 return entryMapped;
             }
-
-            mapper = mapper[0];
 
             if (mapper.transform !== undefined)
                 entryMapped[mapper.target] = mapper.transform(entry[field], entry);
@@ -43,5 +32,5 @@ export const mapFields = mapping => data => {
         }, {});
     })
 
-    return promiseWrapper(resolved(dataMapped));
+    return resolved(dataMapped);
 };

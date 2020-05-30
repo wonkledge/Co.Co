@@ -16,7 +16,7 @@ describe('resolved function', () => {
     it('Should return object with status RESOLVED', () => {
         const data = 'payload';
 
-        expect(resolved(data)).toStrictEqual({status: RESOLVED, payload: data})
+        expect(resolved(data)).resolves.toBe(data)
     });
 });
 
@@ -24,23 +24,6 @@ describe('rejected function', () => {
     it('Should return object with status REJECTED', () => {
         const data = 'payload';
 
-        expect(rejected(data)).toStrictEqual({status: REJECTED, payload: data})
-    });
-});
-
-
-describe('promise wrapper function', () => {
-    it('Should resolve when data has status resolved', () => {
-        const data = 'payload';
-        const promiseStatus = resolved(data);
-
-        expect(promiseWrapper(promiseStatus)).resolves.toBe(data);
-    });
-
-    it('Should reject when data has status resolved', () => {
-        const data = 'payload';
-        const promiseStatus = rejected(data);
-
-        expect(promiseWrapper(promiseStatus)).rejects.toBe(data);
+        expect(rejected(data)).rejects.toBe(data);
     });
 });
