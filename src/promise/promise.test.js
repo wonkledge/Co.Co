@@ -1,4 +1,4 @@
-import {either, REJECTED, RESOLVED, resolved, rejected, promiseWrapper} from "./promise";
+import {either, resolved, rejected, combine} from "./promise";
 
 describe('either function', () => {
     it('call left function on success, call right function on fail', () => {
@@ -25,5 +25,14 @@ describe('rejected function', () => {
         const data = 'payload';
 
         expect(rejected(data)).rejects.toBe(data);
+    });
+});
+
+describe('combine function', () => {
+    it('Should array of functions', () => {
+        const sum = (a,b) => a + b;
+        const times = (a,b) => a * b;
+
+        expect(combine(sum, times)).toStrictEqual([sum, times]);
     });
 });

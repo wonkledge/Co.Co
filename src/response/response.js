@@ -1,5 +1,5 @@
 import {either} from "../promise/promise";
-import {HTTP_CODE_200, HTTP_CODE_201} from "../httpCode/httpCode";
+import {HTTP_CODE_200, HTTP_CODE_201, HTTP_CODE_501} from "../httpCode/httpCode";
 
 const VERB_POST = 'VERB_POST';
 const VERB_GET = 'VERB_GET';

@@ -1,6 +1,6 @@
 {
   "name": "@wonkledge/co.co",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Node JS API Framework",
   "main": "index.js",
   "scripts": {

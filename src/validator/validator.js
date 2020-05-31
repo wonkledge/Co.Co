@@ -3,6 +3,7 @@ import {HTTP_CODE_400, httpResponseWrapper} from "../httpCode/httpCode";
 
 export const checkParameters = validators => req => {
     let errors = [];
+
     req = discardUnusedParameters(req, validators);
     errors = checkRequiredParameters(req, validators);
 
