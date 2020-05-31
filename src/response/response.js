@@ -20,7 +20,7 @@ const handleResponse = (res, verb) => (data) => {
 }
 
 const handleErrorResponse = (res) => errors => {
-    res.status(data.code);
+    res.status(errors.code);
     res.json({ errors });
 }
 
